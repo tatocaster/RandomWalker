@@ -3,7 +3,7 @@
  * @description Random Walker
  */
 
-
+'use strict'
 (function(document,window){
 
 	var Walker, draw;
@@ -32,10 +32,11 @@
 		x	: 0,
 		y	: 0,
 		lineWidth : 8,
+		t : null,
 
 		init : function(){
 
-			var canvas, context, t;
+			var canvas, context;
 
 			canvas = document.getElementById("canvas");
 			context = canvas.getContext("2d");
