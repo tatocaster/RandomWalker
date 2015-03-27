@@ -3,7 +3,6 @@
  * @description Random Walker
  */
 
-// Gaussian distribution and perlin noise will be added
 
 (function(document,window){
 
@@ -32,7 +31,7 @@
 		color : "blue",
 		x	: 0,
 		y	: 0,
-		lineWidth : 10,
+		lineWidth : 8,
 
 		init : function(){
 
@@ -45,7 +44,7 @@
 			this.x = canvas.width / 2;
 			this.y = canvas.height / 2;
 
-			this.t = setInterval(function(){Walker.randomWalk()}, 85);
+			this.t = setInterval(function(){Walker.randomWalk()}, 30);
 
 		},
 		randomWalk : function(){
@@ -54,18 +53,18 @@
 			color,
 			prev_x = this.x,
 			prev_y = this.y;
-			r = this.getRandomInt(0,4);
 
 			if( (this.x > 0 && this.x < this.canvas.width) && (this.y > 0  && this.y < this.canvas.height) ){
 
-				r = this.getRandomInt(0,4);
+				r = this.getRandom(0,1);
 				color = this.getRandomColor();
-				// it goes obviously right and top
-				if(r > 1){
+
+				// here we can control probability
+				if(r < 0.3){
 				  this.x++;
-				}else if (r > 0){
+				}else if (r < 0.6){
 				  this.x--;
-				}else if (r > 2){
+				}else if (r < 0.8){
 				  this.y++;
 				}else{
 				  this.y--;
@@ -76,14 +75,13 @@
 				prev_y = this.y;
 
 			}else{
-
 				clearInterval(this.t);
 			}
 
 		},
 
-		getRandomInt : function (min, max) {
-	  		return Math.floor(Math.random() * (max - min)) + min;
+		getRandom : function (min, max) {
+	  		return Math.random() * (max - min) + min;
 		},
 
 		getRandomColor : function() {
