@@ -3,7 +3,7 @@
  * @description Random Walker
  */
 
-'use strict'
+'use strict';
 (function(document,window){
 
 	var Walker, draw;
@@ -31,7 +31,7 @@
 		color : "blue",
 		x	: 0,
 		y	: 0,
-		lineWidth : 8,
+		lineWidth : 15,
 		t : null,
 
 		init : function(){
@@ -45,7 +45,7 @@
 			this.x = canvas.width / 2;
 			this.y = canvas.height / 2;
 
-			this.t = setInterval(function(){Walker.randomWalk()}, 30);
+			this.t = setInterval(function(){Walker.randomWalk()}, 20);
 
 		},
 		randomWalk : function(){
